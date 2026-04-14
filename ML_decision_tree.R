@@ -44,3 +44,18 @@ r2_tree_whip   <- 1 - sum((actuals_whip - tree_preds_WHIP)^2, na.rm = TRUE) / su
 rmse_tree_whip #1.194
 mae_tree_whip #1.521
 r2_tree_whip #-0.180
+
+install.packages('rpart.plot')
+library(rpart.plot)
+
+# Variable importance
+importance_tree <- tree_ERA$variable.importance
+barplot(sort(importance_tree, decreasing = TRUE),
+        las = 2,
+        main = "Decision Tree Variable Importance - ERA",
+        ylab = "Importance")
+
+rpart.plot(tree_ERA, 
+           main = "Decision Tree - ERA",
+           type = 4,
+           extra = 101)
