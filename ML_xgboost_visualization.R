@@ -11,3 +11,8 @@ xgb.plot.shap(
   model = model_era,
   top_n = 6
 )
+
+#add actual vs predicted plot 
+#add residual distribution 
+#add predicted vs actual ERA by bucket
+

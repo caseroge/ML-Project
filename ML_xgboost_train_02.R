@@ -9,6 +9,12 @@ dim(data_2025)
 
 # check for any obvious issues
 
+all_seasons <- all_seasons %>% 
+  select(-ends_with("n_pitches"))
+
+data_2025 <- data_2025 %>%
+  select(-ends_with("n_pitches"))
+
 #look for NA
 sum(is.na(all_seasons$era)) #no NA
 sum(is.na(all_seasons$whip)) #no NA
@@ -108,3 +114,26 @@ cat("=== WHIP Model ===\n")
 cat("RMSE:", round(rmse_whip, 4), "\n")
 cat("MAE: ", round(mae_whip,  4), "\n")
 cat("R2:  ", round(r2_whip,   4), "\n")
+
+
+#Results
+#RMSE, average magnitude of errors, but squares so larger errors are more penalized
+#model prediction is off by about .7 points for ERA
+
+#MAE similar but treats all errors equally, more robust, notably lower than RMSE, means that could be making some errors 
+
+#R2 - proportion of variance in the outcome explained by your model. .6 - 60% of variance in ERA explained by model.
+
+
+#ERA RMSE - 0.7405
+#ERA MAE - 0.5547
+#ERA R2 - 0.6001
+
+#WHIP RMSE - 0.1248
+#WHIP MAE - 0.0933
+#WHIP R2 - 0.5791
+
+class(test_era)
+class(pred_era)
+
+#hyper parameter tuning
