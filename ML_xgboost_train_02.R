@@ -93,6 +93,7 @@ pred_era  <- predict(model_era,  dtest_era)
 pred_whip <- predict(model_whip, dtest_whip)
 
 
+
 test_era  <- as.numeric(data_2025$era)
 test_whip <- as.numeric(data_2025$whip)
 
